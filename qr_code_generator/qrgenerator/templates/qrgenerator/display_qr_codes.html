@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display QR Codes</title>
+</head>
+<body>
+    <h1>Display QR Codes</h1>
+
+    {% if qr_codes %}
+        <ul>
+            {% for qr_code in qr_codes %}
+                <li>
+                    <strong>Data:</strong> {{ qr_code.data }},
+                    <strong>Color:</strong> {{ qr_code.color }},
+                    <strong>Size:</strong> {{ qr_code.size }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No QR codes available.</p>
+    {% endif %}
+</body>
+</html>

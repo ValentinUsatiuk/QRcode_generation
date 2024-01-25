@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate QR Code</title>
+</head>
+<body>
+    <h1>Generate QR Code</h1>
+    <form method="post" action="{% url 'generate_qr_code' %}">
+        {% csrf_token %}
+        <label for="data">Data:</label>
+        <input type="text" name="data" required><br>
+
+        <label for="color">Color:</label>
+        <input type="color" name="color" value="#000000"><br>
+
+        <label for="size">Size:</label>
+        <input type="number" name="size" value="200" min="1"><br>
+
+        <button type="submit">Generate QR Code</button>
+    </form>
+
+    {% if img_path %}
+        <h2>Generated QR Code:</h2>
+        <img src="{{ img_path }}" alt="QR Code">
+    {% endif %}
+</body>
+</html>
